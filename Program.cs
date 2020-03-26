@@ -26,7 +26,7 @@ namespace DataProviderFactory
                 {
                     WriteLine($"Your connection object is a: {connection.GetType().Name}");
                     // Get the connection string from App.config.
-                    connection.ConnectionString = AppSettings["connectionString"];
+                    connection.ConnectionString = ConnectionStrings["AutoLotSqlProvider"].ConnectionString;
                     connection.Open();
 
                     if (connection is SqlConnection sqlConnection)
