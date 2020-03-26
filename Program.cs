@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using System.Data.SqlClient;
 using static System.Configuration.ConfigurationManager;
 using static System.Console;
 using static System.Data.Common.DbProviderFactories;
@@ -27,6 +28,9 @@ namespace DataProviderFactory
                     // Get the connection string from App.config.
                     connection.ConnectionString = AppSettings["connectionString"];
                     connection.Open();
+
+                    if (connection is SqlConnection sqlConnection)
+                        WriteLine(sqlConnection.ServerVersion);
 
                     // Make command object.
                     DbCommand command = factory.CreateCommand();
